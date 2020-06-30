@@ -4,7 +4,9 @@
 {% block container %}
   <div class="col-md-12 col-md-offset-1">
     <h3>Login</h3>
-    <form class="" action="index.html" method="post">
+    <form class=""  method="post">
+
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
 
     <div class="form-group">
 
@@ -18,7 +20,7 @@
 
     </div>
 
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-primary" name="button">
         Login
     </button>
 

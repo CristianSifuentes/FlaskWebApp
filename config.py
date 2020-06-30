@@ -1,5 +1,5 @@
 class Config:
-   pass
+   SECRET_KEY = 'example'
 
 class DevelopmentConfig(Config):
     DEBUG = True
