@@ -10,3 +10,5 @@ python manage.py runserver
 pip install Flask-Bootstrap4
 pip install WTForms
 pip install flask-wtf
+pip install Flask-SQLAlchemy
+pip install mysqlclient
