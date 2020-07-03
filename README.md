@@ -12,7 +12,9 @@ pip install WTForms
 pip install flask-wtf
 pip install Flask-SQLAlchemy
 pip install mysqlclient (it´s was not used)
-pip install mysql-connector-python
+pip install mysql-connector-python 
+pip install email_validator
+
 
 
 https://pypi.org/project/mysql-connector-python/
