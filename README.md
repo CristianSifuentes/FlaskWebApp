@@ -11,4 +11,10 @@ pip install Flask-Bootstrap4
 pip install WTForms
 pip install flask-wtf
 pip install Flask-SQLAlchemy
-pip install mysqlclient
+pip install mysqlclient (it´s was not used)
+pip install mysql-connector-python
+
+
+https://pypi.org/project/mysql-connector-python/
+https://docs.sqlalchemy.org/en/13/dialects/mysql.html#module-sqlalchemy.dialects.mysql.mysqlconnector
+https://stackoverflow.com/questions/14164183/python-3-and-mysql-through-sqlalchemy
