@@ -15,6 +15,7 @@ pip install mysqlclient (it´s was not used)
 pip install mysql-connector-python 
 pip install email_validator
 pip install Werkzeug
+pip install flask-login
 
 
 https://pypi.org/project/mysql-connector-python/

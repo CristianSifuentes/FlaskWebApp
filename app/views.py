@@ -1,9 +1,18 @@
 from flask import Blueprint
 from flask import render_template, request, flash
+from flask_login import login_user
 
 from .forms import LoginForm, RegisterForm
 from .models import User
+from . import login_manager
+
 page = Blueprint('page', __name__)
+
+
+
+@login_manager.user_loader
+def load_user(id):
+    return User.get_by_id(id)
 
 @page.app_errorhandler(404)
 def page_notfound(error):
@@ -21,6 +30,7 @@ def login():
        
        user = User.get_by_username(form.username.data)
        if user and user.check_password(form.password.data):
+           login_user(user)
            flash('User authenticated successfully')
            print('bien')
        else:
