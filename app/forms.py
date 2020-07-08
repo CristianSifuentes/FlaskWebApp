@@ -52,3 +52,14 @@ class RegisterForm(Form):
     def validate_email(self, email):
         if User.get_by_email(email.data):
             raise validators.ValidationError('Email is used already')
+        
+        
+    def validate(self):
+        if not Form.validate(self):
+              return False
+          
+        if len(self.password.data)< 3:
+          self.password.errors.append('Password is short')
+          return False
+        
+        return True
