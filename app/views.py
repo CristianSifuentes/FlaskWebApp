@@ -18,10 +18,19 @@ def login():
    form = LoginForm(request.form)
    
    if request.method == 'POST' and form.validate():
-       print(form.username.data)
-       print(form.password.data)
+       
+       user = User.get_by_username(form.username.data)
+       if user and user.check_password(form.password.data):
+           flash('User authenticated successfully')
+           print('bien')
+       else:
+           print('no bien')
 
-       print('Nueva sesión creada!')
+       
+    #    print(form.username.data)
+    #    print(form.password.data)
+
+    #    print('Nueva sesión creada!')
 
    return render_template('auth/login.html', title='login', form = form)
 
@@ -31,7 +40,7 @@ def register():
        if(request.method == 'POST'):
            if form.validate():
             user = User.create_element(form.username.data, form.password.data, form.email.data)            
-            flash('User registed succefully')
+            flash('User registed successfully')
 
        return render_template('auth/register.html', title='Register', form=form)
 
