@@ -34,13 +34,9 @@ def login():
            flash('User authenticated successfully')
            print('bien')
        else:
+           flash('User or password invalid', 'error')
            print('no bien')
 
-       
-    #    print(form.username.data)
-    #    print(form.password.data)
-
-    #    print('Nueva sesión creada!')
 
    return render_template('auth/login.html', title='login', form = form)
 
