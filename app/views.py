@@ -1,6 +1,6 @@
 from flask import Blueprint
-from flask import render_template, request, flash
-from flask_login import login_user
+from flask import render_template, request, flash, redirect, url_for
+from flask_login import login_user, logout_user
 
 from .forms import LoginForm, RegisterForm
 from .models import User
@@ -22,6 +22,12 @@ def page_notfound(error):
 def index():
     return render_template('index.html', title='index')
 
+@page.route('/logout')
+def logout():
+    logout_user()
+    flash('Session was closed successfully')
+    return redirect(url_for('.login'))
+    
 @page.route('/login', methods=['GET', 'POST'])
 def login():
    form = LoginForm(request.form)
