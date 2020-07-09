@@ -19,6 +19,9 @@ def create_app(config):
     csrf.init_app(app)
     bootstrap.init_app(app)
     login_manager.init_app(app)
+    login_manager.login_view = '.login' # url_for
+    login_manager.login_message = 'Session not started'
+    
     app.register_blueprint(page)
 
     with app.app_context():

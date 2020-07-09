@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import render_template, request, flash, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 
 from .forms import LoginForm, RegisterForm
 from .models import User
@@ -56,3 +56,7 @@ def register():
 
        return render_template('auth/register.html', title='Register', form=form)
 
+@page.route('/task')
+@login_required
+def task():
+       return render_template('task/list.html', title='Tasks')
