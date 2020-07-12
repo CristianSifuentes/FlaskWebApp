@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import render_template, request, flash, redirect, url_for
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 from .forms import LoginForm, RegisterForm
 from .models import User
@@ -30,6 +30,10 @@ def logout():
     
 @page.route('/login', methods=['GET', 'POST'])
 def login():
+    
+   if current_user.is_authenticated:
+       return redirect(url_for('.task')) 
+   
    form = LoginForm(request.form)
    
    if request.method == 'POST' and form.validate():
@@ -48,11 +52,17 @@ def login():
 
 @page.route('/register',  methods=['GET', 'POST'])
 def register():
+     
+       if current_user.is_authenticated:
+            return redirect(url_for('.task'))  
+   
        form = RegisterForm(request.form)
        if(request.method == 'POST'):
            if form.validate():
             user = User.create_element(form.username.data, form.password.data, form.email.data)            
             flash('User registed successfully')
+            login_user(user)
+            return redirect(url_for('.task'))  
 
        return render_template('auth/register.html', title='Register', form=form)
 

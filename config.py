@@ -3,7 +3,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:@localhost/project_web'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:@localhost/project_web2'
 
     # SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/project_web'
 
