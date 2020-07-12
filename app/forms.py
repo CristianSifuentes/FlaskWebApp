@@ -1,6 +1,6 @@
 from wtforms import Form
 from wtforms import validators
-from wtforms import StringField, PasswordField, ValidationError, BooleanField
+from wtforms import StringField, PasswordField, ValidationError, BooleanField, TextAreaField
 from wtforms.fields.html5 import EmailField
 
 from .models import User
@@ -10,11 +10,19 @@ def codi_validador(form, field):
         raise validators.ValidationError('codi is not forbbiden')
         
 
-  
+class TaskForm(Form):
+    title = StringField('Title',[
+        validators.length(min=4, max=50, message='Value between 4 and 50'),
+        validators.DataRequired(message='Title is required')
+    ])
+    description = TextAreaField('Description',[
+        validators.DataRequired(message='Description is required')
+    ], render_kw={'rows': 5})
+
 class LoginForm(Form):
     
     username = StringField('Username',[
-        validators.length(min=4, max=50, message='Value betweeb 4 and 50')
+        validators.length(min=4, max=50, message='Value between 4 and 50')
         
     ])
     password = PasswordField('Password',[
