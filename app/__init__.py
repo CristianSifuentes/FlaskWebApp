@@ -13,6 +13,7 @@ login_manager = LoginManager()
 
 from .views import page
 from .models import User
+from .consts import LOGIN_REQUIRED
 
 def create_app(config):
     app.config.from_object(config)
@@ -20,7 +21,7 @@ def create_app(config):
     bootstrap.init_app(app)
     login_manager.init_app(app)
     login_manager.login_view = '.login' # url_for
-    login_manager.login_message = 'Session not started'
+    login_manager.login_message = LOGIN_REQUIRED
     
     app.register_blueprint(page)
 
