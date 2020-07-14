@@ -49,6 +49,18 @@ class Task(db.Model):
         
         return task
         
+    @classmethod
+    def delete_element(cls, id):
+        task = Task.get_by_id(id)
+        
+        if task is None:
+            return False
+        
+        db.session.delete(task)
+        db.session.commit()
+        
+        return True
+        
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
