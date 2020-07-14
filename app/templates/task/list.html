@@ -11,6 +11,7 @@
          <tr>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
+            <th scope="col"></th>
          </tr>
       </thead>
       <tbody>
@@ -20,7 +21,11 @@
                  {{ task.title }}
               </td>
               <td>
-               {{ task.description }}
+               {{ task.little_description }}
+            </td>
+            <td>
+               <a href="{{ url_for('.edit_task', task_id=task.id)  }}" class="btn btn-primary">Edit</a>
+               <a href="" class="btn btn-danger">Delete</a>
             </td>
            </tr>
          {% endfor %}

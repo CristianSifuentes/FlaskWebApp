@@ -15,12 +15,40 @@ class Task(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
+    @property
+    def little_description(self):
+        if len(self.description) > 20:
+            return self.description[0:19] + "..."
+        
+        return self.description
+
     @classmethod
     def create_element(cls, title, description, user_id):
         task = Task(title=title, description=description, user_id=user_id)
         db.session.add(task)
         db.session.commit()
         return task
+    
+    @classmethod
+    def get_by_id(cls, id):
+        return Task.query.filter_by(id=id).first()
+    
+    @classmethod
+    def update_element(cls, id, title, description):
+        
+        task = Task.get_by_id(id)
+        
+        if task is None:
+            return False
+        
+        task.title = title
+        task.description = description 
+        
+        db.session.add(task)
+        db.session.commit()
+        
+        return task
+        
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
