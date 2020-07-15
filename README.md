@@ -16,7 +16,8 @@ pip install mysql-connector-python
 pip install email_validator
 pip install Werkzeug
 pip install flask-login
-
+pip install flask-mail
+pip install python-decouple
 
 https://pypi.org/project/mysql-connector-python/
 https://docs.sqlalchemy.org/en/13/dialects/mysql.html#module-sqlalchemy.dialects.mysql.mysqlconnector
