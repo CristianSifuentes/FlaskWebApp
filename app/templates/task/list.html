@@ -18,7 +18,8 @@
          {% for task in tasks %}
            <tr>
               <td>
-                 {{ task.title }}
+               <a href="{{ url_for('.get_task', task_id=task.id)  }}">{{ task.title }}</a>
+   
               </td>
               <td>
                {{ task.little_description }}

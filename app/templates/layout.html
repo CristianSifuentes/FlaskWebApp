@@ -15,18 +15,18 @@
             <li class="nav-item ml-auto">
               <a class="nav-link" href="{{ url_for('.logout') }}">logout</a>
            </li>
-           <li class="nav-item ml-auto">
+           <li class="nav-item ml-auto {% if active == 'task' %}   active  {% endif %}">
             <a class="nav-link" href="{{ url_for('.task') }}">Tasks</a>
             </li>
-            <li class="nav-item ml-auto">
+            <li class="nav-item ml-auto {% if active == 'task_new' %}   active  {% endif %}">
               <a class="nav-link" href="{{ url_for('.task_new') }}">Add task</a>
               </li>
             {% else %}
-            <li class="nav-item ml-auto">
+            <li class="nav-item ml-auto {% if active == 'login' %}   active  {% endif %}">
               <a class="nav-link" href="{{ url_for('.login') }}">login</a>
             </li>
 
-            <li class="nav-item ml-auto">
+            <li class="nav-item ml-auto {% if active == 'register' %}   active  {% endif %}">
               <a class="nav-link" href="{{ url_for('.register') }}">register</a>
               </li>
 

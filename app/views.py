@@ -50,7 +50,7 @@ def login():
            print('no bien')
 
 
-   return render_template('auth/login.html', title='login', form = form)
+   return render_template('auth/login.html', title='login', form=form, active='login')
 
 @page.route('/register',  methods=['GET', 'POST'])
 def register():
@@ -66,7 +66,7 @@ def register():
             login_user(user)
             return redirect(url_for('.task'))  
 
-       return render_template('auth/register.html', title='Register', form=form)
+       return render_template('auth/register.html', title='Register', form=form, active='register')
 
 @page.route('/task')
 @page.route('/task/<int:page>')
@@ -74,7 +74,7 @@ def register():
 def task(page=1,per_page=2):
        pagination = current_user.tasks.paginate(page,per_page=per_page)
        tasks = pagination.items
-       return render_template('task/list.html', title='Tasks', tasks=tasks, pagination=pagination, page=page)
+       return render_template('task/list.html', title='Tasks', tasks=tasks, pagination=pagination, page=page, active='task')
 
 @page.route('/task/new',  methods=['GET', 'POST'])
 @login_required
@@ -85,7 +85,7 @@ def task_new():
             if task:
                flash(TASK_CREATED)
        
-       return render_template('task/new.html', title='New Task', form=form)
+       return render_template('task/new.html', title='New Task', form=form, active='task_new')
    
 @page.route('/task/edit/<int:task_id>', methods=['GET', 'POST'])
 @login_required
@@ -119,4 +119,12 @@ def delete_task(task_id):
        
     return redirect(url_for('.task'))
         
+
+
+@page.route('/task/show/<int:task_id>')
+def get_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    
+    return render_template('task/show.html', title='Edit Task', task=task)
+
     
