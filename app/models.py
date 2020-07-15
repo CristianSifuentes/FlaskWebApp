@@ -70,7 +70,7 @@ class User(db.Model, UserMixin):
     encrypted_password = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.now())
-    tasks = db.relationship('Task')
+    tasks = db.relationship('Task', lazy='dynamic')
      
     def check_password(self, password):
         return check_password_hash(self.encrypted_password, password)
