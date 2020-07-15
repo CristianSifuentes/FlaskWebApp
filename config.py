@@ -12,7 +12,7 @@ class DevelopmentConfig(Config):
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'sifuentescovarrubiasitsl@gmail.com'
-    MAIL_PASSWORD = 'csc090890'
+    MAIL_PASSWORD = ''
     # MAIL_PASSWORD = config('MAIL_PASSWORD')
 
     # SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/project_web'
